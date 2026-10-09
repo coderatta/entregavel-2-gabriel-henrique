@@ -33,5 +33,8 @@ class ImagemAnotada:
                 box.desenhar(img)
 
             cv2.imshow("Imagem Anotada", img)
-            cv2.waitKey(0)
             cv2.imwrite(f"resultados/{self.img_name}", img)
+
+            if cv2.waitKey(0) & 0xFF == ord("q"):
+                return False
+        return True

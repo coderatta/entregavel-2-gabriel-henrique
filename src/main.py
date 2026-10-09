@@ -4,6 +4,7 @@ from modelos import ImagemAnotada
 
 for img_name, boxes in boxes_per_img.items():
     img = ImagemAnotada(img_name, boxes)
-    img.adicionar_deteccao()
+    if not img.adicionar_deteccao():
+        break
 
 cv2.destroyAllWindows()
