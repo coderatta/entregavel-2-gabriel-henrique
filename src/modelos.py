@@ -31,10 +31,17 @@ class ImagemAnotada:
         else:
             for box in self.boxes:
                 box.desenhar(img)
-
-            cv2.imshow("Imagem Anotada", img)
+            img = cv2.putText(
+                img, "Classe 0", (40, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, blue, 2
+            )
+            img = cv2.putText(
+                img, "Classe 1", (40, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, green, 2
+            )
+            cv2.imshow(self.img_name, img)
             cv2.imwrite(f"resultados/{self.img_name}", img)
 
             if cv2.waitKey(0) & 0xFF == ord("q"):
+                cv2.destroyAllWindows()
                 return False
+            cv2.destroyAllWindows()
         return True
