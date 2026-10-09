@@ -40,8 +40,13 @@ class ImagemAnotada:
             cv2.imshow(self.img_name, img)
             cv2.imwrite(f"resultados/{self.img_name}", img)
 
-            if cv2.waitKey(0) & 0xFF == ord("q"):
-                cv2.destroyAllWindows()
-                return False
+            while True:
+                pressed_key = cv2.waitKey(0) & 0xFF
+                if pressed_key == ord("q"):
+                    cv2.destroyAllWindows()
+                    return False
+                if pressed_key == 32:
+                    break
+
             cv2.destroyAllWindows()
         return True

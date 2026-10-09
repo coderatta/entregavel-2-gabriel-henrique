@@ -7,3 +7,6 @@ def main():
         img = ImagemAnotada(img_name, boxes)
         if not img.adicionar_deteccao():
             break
+
+
+main()
