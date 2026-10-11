@@ -1,5 +1,6 @@
 import cv2
 
+# cores das boxes
 green = (0, 255, 0)
 blue = (255, 0, 0)
 
@@ -40,12 +41,13 @@ class ImagemAnotada:
             cv2.imshow(self.img_name, img)
             cv2.imwrite(f"resultados/{self.img_name}", img)
 
+            # Verifica a tecla pressionada pelo usuario
             while True:
                 pressed_key = cv2.waitKey(0) & 0xFF
-                if pressed_key == ord("q"):
+                if pressed_key == ord("q"):  # tecla q
                     cv2.destroyAllWindows()
                     return False
-                if pressed_key == 32:
+                if pressed_key == 32:  # tecla espaco
                     break
 
             cv2.destroyAllWindows()
